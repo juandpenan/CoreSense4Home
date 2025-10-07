@@ -69,7 +69,7 @@ BT::NodeStatus IsEntityMoving::tick()
 
   } catch (const tf2::TransformException & ex) {
     RCLCPP_INFO(
-      node_->get_logger(), "Could not transform %s to %s: %s", frame_.c_str(), "map", ex.what());
+      node_->get_logger(), "[Is entity_moving] Could not transform %s to %s: %s", frame_.c_str(), "map", ex.what());
     has_stoped_ = false;
     return BT::NodeStatus::SUCCESS;  //ASSUME IS MOVING
   }

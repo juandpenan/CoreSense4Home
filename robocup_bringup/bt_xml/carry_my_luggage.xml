@@ -16,14 +16,14 @@
 
         <RetryUntilSuccessful num_attempts="-1">
             <Sequence>
-                <Condition ID="IsDetected" cam_frame="head_front_camera_rgb_optical_frame" confidence="0.6" frames="{frames}" interest="person" max_depth="5" max_entities="1" order="depth"/>
+                <Condition ID="IsDetected" cam_frame="head_front_camera_optical_frame" confidence="0.6" frames="{frames}" interest="person" max_depth="5" max_entities="1" order="depth"/>
                 <Action ID="FilterEntity" frame="person_0" lambda="0.1"/>
                 <Action ID="ExtractEntityColor" confidence="0.6" interest="person" person_id="{person_id}"/>
                 <Condition ID="IsPointing" output_frame="{bag_tf}"
                                                low_pointing_limit="1"
                                                 high_pointing_limit="3"
                                                person_id="{person_id}"
-                                               cam_frame="head_front_camera_rgb_optical_frame"/>
+                                               cam_frame="head_front_camera_optical_frame"/>
             </Sequence>
         </RetryUntilSuccessful>
         <Action ID="RemoveStringSuffix" string_to_remove="{bag_tf}"
@@ -39,7 +39,7 @@
         </Delay>
         <ReactiveSequence>
             <RetryUntilSuccessful num_attempts="-1">
-                <Condition ID="IsDetected" cam_frame="head_front_camera_rgb_optical_frame" confidence="0.6" frames="{frames}" interest="person" max_depth="5" max_entities="1" order="depth"/>
+                <Condition ID="IsDetected" cam_frame="head_front_camera_optical_frame" confidence="0.6" frames="{frames}" interest="person" max_depth="5" max_entities="1" order="depth"/>
             </RetryUntilSuccessful>
             <Action ID="FilterEntity" frame="person_0" lambda="0.1"/>
             <Action ID="LookAt" tf_frame="person_0_filtered" />
@@ -59,7 +59,7 @@
                     <Fallback>
                         <ReactiveSequence>
                             <RetryUntilSuccessful num_attempts="-1">
-                                <Condition ID="IsDetected" cam_frame="head_front_camera_rgb_optical_frame" 
+                                <Condition ID="IsDetected" cam_frame="head_front_camera_optical_frame" 
                                                            confidence="0.6" 
                                                            person_id="{person_id}"
                                                            interest="person"
@@ -74,7 +74,7 @@
                                                            robot_distance_to_person="1.5"
                                                            frame="person_0_filtered"
                                                            check_time="8.0"/>
-                            <Action ID="FollowEntity" camera_frame="head_front_camera_rgb_optical_frame"
+                            <Action ID="FollowEntity" camera_frame="head_front_camera_optical_frame"
                                                       distance_tolerance="0.2"
                                                       frame_to_follow="person_0_filtered"
                                                       x_axis_max="{max_x}"
@@ -86,13 +86,13 @@
                     </Fallback>
                     <ReactiveSequence>
                         <RetryUntilSuccessful num_attempts="-1">
-                            <Condition ID="IsDetected" cam_frame="head_front_camera_rgb_optical_frame" confidence="0.3" person_id="{person_id}" interest="person" max_depth="2.5" max_entities="1" order="color"/>
+                            <Condition ID="IsDetected" cam_frame="head_front_camera_optical_frame" confidence="0.3" person_id="{person_id}" interest="person" max_depth="2.5" max_entities="1" order="color"/>
                         </RetryUntilSuccessful>
                         <Action ID="FilterEntity" frame="person_0" lambda="0.1"/>
                         <Action ID="LookAt" tf_frame="person_0_filtered"/>
                         <ForceSuccess>
                             <Action ID="GoalPublisher" 
-                            camera_frame="head_front_camera_rgb_optical_frame"
+                            camera_frame="head_front_camera_optical_frame"
                             distance_tolerance="0.2"
                             frame_to_follow="person_0_filtered"/>  
                         </ForceSuccess>
@@ -129,13 +129,13 @@
             <input_port default="0.25" name="lambda"/>
         </Action>
         <Action ID="FollowEntity">
-            <input_port default="head_front_camera_rgb_optical_frame" name="camera_frame"/>
+            <input_port default="head_front_camera_optical_frame" name="camera_frame"/>
             <input_port name="distance_tolerance"/>
             <input_port name="frame_to_follow"/>
         </Action>
         <Action ID="InitCarry"/>
         <Condition ID="IsDetected">
-            <input_port default="head_front_camera_rgb_optical_frame" name="cam_frame"/>
+            <input_port default="head_front_camera_optical_frame" name="cam_frame"/>
             <input_port default="0.6" name="confidence"/>
             <output_port name="frames">array of frames</output_port>
             <input_port default="person" name="interest"/>

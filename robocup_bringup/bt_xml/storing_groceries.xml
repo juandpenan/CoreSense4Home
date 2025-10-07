@@ -23,13 +23,13 @@
                     <RetryUntilSuccessful num_attempts="-1">
                     
                     <ReactiveFallback>
-                            <Condition ID="IsDetected" cam_frame="head_front_camera_rgb_optical_frame" confidence="0.6" frames="{frames}" interest="" max_depth="5" max_entities="1" order="depth"/>
+                            <Condition ID="IsDetected" cam_frame="head_front_camera_optical_frame" confidence="0.6" frames="{frames}" interest="" max_depth="5" max_entities="1" order="depth"/>
                             <Action ID="Pan" period="20.0" range="20" pitch_angle="-34"/>
                         </ReactiveFallback>
                     </RetryUntilSuccessful>
                     <RetryUntilSuccessful num_attempts="-1">
                         <Sequence>
-                            <Condition ID="IsDetected" cam_frame="head_front_camera_rgb_optical_frame"
+                            <Condition ID="IsDetected" cam_frame="head_front_camera_optical_frame"
                                                     confidence="0.6"
                                                     frames="{frames}"
                                                     interest=""
@@ -68,7 +68,7 @@
                                            group_name="arm_torso"/>
                             <RetryUntilSuccessful num_attempts="-1">
                                 <ReactiveFallback>
-                                    <Condition ID="IsDetected" cam_frame="head_front_camera_rgb_optical_frame"
+                                    <Condition ID="IsDetected" cam_frame="head_front_camera_optical_frame"
                                                                confidence="0.6"
                                                                frames="{frames}"
                                                                interest=""
@@ -82,7 +82,7 @@
                             <Action ID="ChooseFromClasses" class_options="{frames}" target_class="{possible_pick}" selected_class_text="{selected_class}"/>
                             <RetryUntilSuccessful num_attempts="-1">
                                 <Sequence>
-                                    <Condition ID="IsDetected" cam_frame="head_front_camera_rgb_optical_frame"
+                                    <Condition ID="IsDetected" cam_frame="head_front_camera_optical_frame"
                                                             confidence="0.6"
                                                             frames="{frames}"
                                                             interest="{selected_class}"
@@ -149,7 +149,7 @@
                                            group_name="arm_torso"/>
                             <RetryUntilSuccessful num_attempts="-1">
                                 <ReactiveFallback>
-                                    <Condition ID="IsDetected" cam_frame="head_front_camera_rgb_optical_frame"
+                                    <Condition ID="IsDetected" cam_frame="head_front_camera_optical_frame"
                                                                confidence="0.6"
                                                                frames="{frames}"
                                                                interest=""
@@ -163,7 +163,7 @@
                             <Action ID="ChooseFromClasses" class_options="{frames}" target_class="{possible_pick}" selected_class_text="{selected_class}"/>
                             <RetryUntilSuccessful num_attempts="-1">
                                 <Sequence>
-                                    <Condition ID="IsDetected" cam_frame="head_front_camera_rgb_optical_frame"
+                                    <Condition ID="IsDetected" cam_frame="head_front_camera_optical_frame"
                                                             confidence="0.6"
                                                             frames="{frames}"
                                                             interest="{selected_class}"
@@ -246,7 +246,7 @@
                             <RetryUntilSuccessful num_attempts="-1">
                                 <ReactiveFallback>
                                     <Sequence>
-                                        <Condition ID="IsDetected" cam_frame="head_front_camera_rgb_optical_frame"
+                                        <Condition ID="IsDetected" cam_frame="head_front_camera_optical_frame"
                                                                     confidence="0.6"
                                                                     frames="{frames}"
                                                                     interest=""
@@ -262,7 +262,7 @@
                             <Action ID="ChooseFromClasses" class_options="{frames}" target_class="{possible_pick}" selected_class_text="{selected_class}"/>
                             <RetryUntilSuccessful num_attempts="-1">
                                 <Sequence>
-                                    <Condition ID="IsDetected" cam_frame="head_front_camera_rgb_optical_frame"
+                                    <Condition ID="IsDetected" cam_frame="head_front_camera_optical_frame"
                                                             confidence="0.6"
                                                             frames="{frames}"
                                                             interest="{selected_class}"

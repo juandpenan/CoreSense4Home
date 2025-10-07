@@ -296,7 +296,7 @@
                                     output_frame="{tf_customer}"
                                     low_pointing_limit="5"
                                     high_pointing_limit="7"
-                                    cam_frame="head_front_camera_rgb_optical_frame"/>
+                                    cam_frame="head_front_camera_optical_frame"/>
                                     
                         <Action ID="Pan" period="45" pitch_angle="2" range="45"/>
                     </ReactiveFallback>
@@ -306,7 +306,7 @@
                                 output_frame="{tf_customer}"
                                 low_pointing_limit="5"
                                 high_pointing_limit="7"
-                                cam_frame="head_front_camera_rgb_optical_frame"/>
+                                cam_frame="head_front_camera_optical_frame"/>
                     <Spin spin_dist="6.28" server_name="spin" server_timeout="20" is_recovery="false"/>
                 </ReactiveFallback> -->
             </Fallback>

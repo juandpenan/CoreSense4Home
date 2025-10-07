@@ -43,23 +43,27 @@ def generate_launch_description():
 
     # Actions
     llama_cmd = create_llama_launch(
-            n_ctx=2048,
-            n_batch=256,
-            n_gpu_layers=23,
-            n_threads=4,
-            n_predict=-1,
+        n_ctx=2048,
+        n_batch=256,
+        n_gpu_layers=23,
+        n_threads=4,
+        n_predict=-1,
 
-            # uncomment this for GPSR:
-            # model_repo="cstr/Spaetzle-v60-7b-Q4_0-GGUF",
-            # model_filename="Spaetzle-v60-7b_Q4_0.gguf",
+        # uncomment this for GPSR:
+        # model_repo="cstr/Spaetzle-v60-7b-Q4_0-GGUF",
+        # model_filename="Spaetzle-v60-7b_Q4_0.gguf",
 
-            # comment this for GPSR:
-            model_repo='TheBloke/Marcoroni-7B-v3-GGUF',
-            model_filename='marcoroni-7b-v3.Q3_K_L.gguf',
+        # # comment this for GPSR:
+        # model_repo='TheBloke/Marcoroni-7B-v3-GGUF',
+        # model_filename='marcoroni-7b-v3.Q3_K_L.gguf',
 
-            prefix='\n\n### Instruction:\n',
-            suffix='\n\n### Response:\n',
-            stopping_words=["\n\n\n\n"],
+        # Use this repo:
+        model_repo="DevQuasar/Qwen.Qwen2.5-VL-3B-Instruct-GGUF",
+        model_filename='Qwen.Qwen2.5-VL-3B-Instruct.Q8_0.gguf',
+
+        prefix='\n\n### Instruction:\n',
+        suffix='\n\n### Response:\n',
+        stopping_words=["\n\n\n\n"],
     )
 
     whisper_cmd = IncludeLaunchDescription(

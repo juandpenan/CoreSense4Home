@@ -91,9 +91,15 @@ def generate_launch_description():
             'input_depth_topic': '/head_front_camera/depth/image_raw',
             'input_depth_info_topic': '/head_front_camera/depth/camera_info',
             'depth_image_units_divisor': '1000',  # 1 for simulation, 1000 in real robot
-            'target_frame': 'head_front_camera_rgb_optical_frame',
+            'target_frame': 'head_front_camera_optical_frame',
             'threshold': '0.5'
             }.items()
+    )
+
+    dialog = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(package_dir, 'launch', 'dialog.launch.py')
+        )
     )
 
     navigation = IncludeLaunchDescription(
@@ -108,18 +114,19 @@ def generate_launch_description():
                     '/config/carry_my_luggage/tiago_nav_follow_params.yaml',
             'map': os.path.join(package_dir,
                                 'maps',
-                                'carry_map.yaml'),
+                                'lab_help_me_carry.yaml'),
         }.items()
     )
 
     ld = LaunchDescription()
     ld.add_action(navigation)
-    ld.add_action(whisper_cmd)
-    ld.add_action(audio_common_player_node)
-    ld.add_action(audio_common_tts_node)
+    # ld.add_action(whisper_cmd)
+    # ld.add_action(audio_common_player_node)
+    # ld.add_action(audio_common_tts_node)
+    ld.add_action(dialog)
     ld.add_action(yolo3d)
     ld.add_action(real_time)
-    # ld.add_action(move_group)
+    ld.add_action(move_group)
     # ld.add_action(manipulation_server)
 
     return ld
